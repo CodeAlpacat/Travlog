@@ -8,20 +8,12 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import Login from './Login'
+import NavBar from './NavBar'
 import { Link } from "react-router-dom";
-const Header = () => {
-  return (
-    <header>
-      <h1>에몽이의 여행 블로그</h1>
-    </header>
-  );
-};
-
-const NavBar = () => {
+const NavigationBar = () => {
   return (
     <nav>
-      <Link to="/Login">로그인</Link>
+      <NavBar/>
     </nav>
   );
 };
@@ -73,11 +65,8 @@ const Article = () => {
 const Home = () => {
   return (
     <Container fixed>
-      <Header />
+      <NavigationBar />
       <Grid container>
-        <Grid item xs={12}>
-          <NavBar />
-        </Grid>
         <Grid item>
           <Article />
         </Grid>
