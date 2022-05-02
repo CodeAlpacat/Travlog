@@ -24,7 +24,7 @@ const UserBox = styled(Box)({
   marginBottom:'20px'
 });
 
-const Add = () => {
+const Add = ({getPostContent, getPostTitle, CreateNewData}) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -49,7 +49,7 @@ const Add = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box width={400} height={280} p={3} borderRadius={10} bgcolor={"background.default"} color={"text.primary"}>
+        <Box width={480} height={330} p={3} borderRadius={10} bgcolor={"background.default"} color={"text.primary"}>
           <Typography variant="h5" color="gray" textAlign="center">
             게시물 작성
           </Typography>
@@ -61,7 +61,16 @@ const Add = () => {
             <Typography fontWeight={500} variant="span">모코코</Typography>
           </UserBox>
           <TextField
-          id="standard-multiline-static"
+          id="titleAdd"
+          onChange={getPostTitle}
+          label="제목을 작성해주세요"
+          multiline
+          maxRows={4}
+          variant="filled"
+        />
+          <TextField
+          id="contentAdd"
+          onChange={getPostContent}
           sx={{ width:"100%" }}
           multiline
           rows={3}
@@ -74,7 +83,7 @@ const Add = () => {
           <VideocamIcon color='success'/>
           <AddLocationAltIcon color="error"/>
         </Stack>
-        <Button fullWidth variant="contained">
+        <Button onClick={CreateNewData} fullWidth variant="contained">
           게시하기
         </Button>
         </Box>

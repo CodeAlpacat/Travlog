@@ -66,6 +66,7 @@ const NavBar = () => {
       display: "none",
     },
   }));
+  
   const [open, setOpen] = useState(false);
 
   return (
