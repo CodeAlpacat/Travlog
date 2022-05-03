@@ -9,7 +9,7 @@ import Avatar from "@mui/material/Avatar";
 import NightlightIcon from "@mui/icons-material/Nightlight";
 import Switch from "@mui/material/Switch";
 
-const SideBar = ({ mode, setMode }) => {
+const SideBar = ({ onDarkMode }) => {
   return (
     <Box flex={1} sx={{ display: { xs: "none", sm: "block" } }}>
       <Box position="fixed">
@@ -80,7 +80,7 @@ const SideBar = ({ mode, setMode }) => {
                 <NightlightIcon />
               </ListItemIcon>
               <Switch
-                onChange={(e) => setMode(mode === "light" ? "dark" : "light")}
+                onChange={onDarkMode}
               />
             </ListItemButton>
           </ListItem>

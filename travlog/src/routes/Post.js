@@ -22,7 +22,7 @@ import { MoreVert } from "@mui/icons-material";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 
-const Post = ({ dataTitle, dataContent}) => {
+const Post = ({ dataTitle, dataContent, deletePostEvent, dataId}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -53,7 +53,7 @@ const Post = ({ dataTitle, dataContent}) => {
                 "aria-labelledby": "basic-button",
               }}
             >
-              <MenuItem >게시글 삭제</MenuItem>
+              <MenuItem onClick={() => deletePostEvent(dataId)}>게시글 삭제</MenuItem>
             </Menu>
           </IconButton>
         }

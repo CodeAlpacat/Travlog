@@ -480,3 +480,59 @@ export default function SimpleBadge() {
     </Card>
 ```
 
+
+
+## 5. 코드 리뷰 & 설계 시 고려사항
+
+
+
+### 1) 컴포넌트의 독립성
+
+- 개선 전
+
+```react
+const [mode, setMode] = useState("light");
+  const darkTheme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
+
+//SideBar의 props로 전달
+<SideBar setMode={setMode} mode={mode} />
+
+//SideBar 내부에서 사용한 콜백 함수
+<Switch onChange={(e) => setMode(mode === "light" ? "dark" : "light")}/>
+```
+
+- 개선 후
+
+```react
+const [mode, setMode] = useState("light");
+  const darkTheme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
+
+const onDarkMode = () => {
+    setMode(mode === 'dark' ? 'light' : 'dark')
+  }
+
+//SideBar의 props로 전달
+<SideBar onDarkMode={onDarkMode} />
+
+//SideBar 내부에서 사용한 콜백 함수
+<Switch onChange={onDarkMode}/>
+```
+
+
+
+### 2) DOM 요소에 접근
+
+> 자바스크립트를 다루다보니 DOM 트리의 노드에 접근 할 때, document.querySelector을 이용해 리엑트에서도 DOM을 조작하면 안된다는 글을 접했다. 다행히 요소에 접근하려던 참이었는데 좋은 글을 접해 useRef를 적용하게 되었다.
+
+- React는 Virtual DOM을 통해 실제 DOM을 그리기 때문에 실제 DOM으로 접근하는 querySelector을 쓰면, 리엑트가 Virtual DOM에 존재하는지 실제 DOM에 존재하는지 불투명해진다.
+- React 내부 데이터는 State로 조작되는데 실제 DOM을 건들이면 React가 조작하는 범위를 벗어나고, 리엑트를 사용하는 이유가 없어진다.
+- 생명주기에 맞춰서 가져온 DOM Element만을 신뢰할 수 있기 때문에, 데이터를 어디서 어떻게 조작하는지 모르니 당연히 디버깅도 어려워진다.
+
