@@ -22,7 +22,7 @@ import { MoreVert } from "@mui/icons-material";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 
-const Post = ({ dataTitle, dataContent, deletePostEvent, dataId}) => {
+const Post = ({ dataTitle, dataContent, deletePostEvent, dataId, imageURL, dateInput}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -59,12 +59,13 @@ const Post = ({ dataTitle, dataContent, deletePostEvent, dataId}) => {
         }
         // title="둘기의 그것이 알고싶다!"
         title={dataTitle}
-        subheader="4월 30일, 2022"
+        subheader={dateInput}
       />
       <CardMedia
         component="img"
-        height="900"
-        image="https://i.pinimg.com/564x/44/71/01/447101dbe5a1f0ab0a1fea27d9268123.jpg"
+        width='100%'
+        image= {imageURL}
+        // "https://i.pinimg.com/564x/44/71/01/447101dbe5a1f0ab0a1fea27d9268123.jpg"
         alt="Paella dish"
       />
       <CardContent>

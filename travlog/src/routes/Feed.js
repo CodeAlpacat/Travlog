@@ -7,7 +7,7 @@ const Feed = ({ postDatas, deletePostEvent}) => {
   return (
     <Box flex={4} p={2}>
       {postDatas && postDatas.map((data) => (
-        <Post dataTitle={data.title} dataContent={data.content} dataId={data.id} key={data.id} deletePostEvent={deletePostEvent}/>
+        <Post dataTitle={data.title} imageURL={data.imageURL} dateInput={data.dateInput} dataContent={data.content} dataId={data.id} key={data.id} deletePostEvent={deletePostEvent}/>
       ))}
     </Box>
   );
