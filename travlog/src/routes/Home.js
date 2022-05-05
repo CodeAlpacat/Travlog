@@ -24,6 +24,10 @@ const Home = () => {
   const [postContent, setPostContent] = useState("");
   const [imgURL, setImageURL] = useState(null);
   const [dateInput, setDateInput] = useState();
+
+  //appbar 다크모드
+  
+
   useEffect(() => {
     window.localStorage.setItem("postDatas", JSON.stringify(postDatas));
   }, [postDatas]);
@@ -51,12 +55,11 @@ const Home = () => {
         },
         ...currentDatas,
       ]);
-      //생성한 뒤 저장
-      // savePostLocal();
     } else {
       setPostDatas([]);
     }
   };
+  
 
   //다크모드 함수
   const onDarkMode = () => {
@@ -84,13 +87,14 @@ const Home = () => {
   //날짜 정보 가져와 업데이트
   const setDatePicker = (e) => {
     setDateInput(String(e).substring(0, 15))
-    console.log(dateInput)
   }
+
+  
 
   return (
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={"background.default"} color={"text.primary"}>
-        <NavBar />
+        <NavBar mode={mode} />
         <Stack direction="row" spacing={2} justifyContent="space-between">
           <SideBar onDarkMode={onDarkMode} />
           <Feed postDatas={postDatas} deletePostEvent={deletePostEvent} />

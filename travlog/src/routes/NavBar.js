@@ -1,5 +1,3 @@
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import { Toolbar, styled, AppBar, Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
@@ -9,44 +7,32 @@ import { useState } from "react";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import PetsIcon from "@mui/icons-material/Pets";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import { borderRadius } from "@mui/system";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
 import { Notifications } from "@mui/icons-material";
 import LoginIcon from "@mui/icons-material/Login";
 
-const NavBar = () => {
-  const theme = createTheme({
-    palette: {
-      neutral: {
-        main: "#f3e5f5",
-        contrastText: "#fff",
-      },
-    },
-    typography: {
-      fontFamily: [
-        "-apple-system",
-        "BlinkMacSystemFont",
-        '"Segoe UI"',
-        "Roboto",
-        '"Helvetica Neue"',
-        "Arial",
-        "sans-serif",
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        "Georgia",
-        "Impact Roman",
-        "Impact",
-      ].join(","),
-    },
-  });
-
+const NavBar = ({mode}) => {
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
+  });
+
+  const Theme = createTheme({
+    palette: {
+      primary: {
+        main: '#00bcd4',
+      }
+    },
+  });
+
+  const ThemeDark = createTheme({
+    palette: {
+      primary: {
+        main: '#000',
+      }
+    },
   });
 
   const Icons = styled(Box)(({ theme }) => ({
@@ -66,37 +52,27 @@ const NavBar = () => {
       display: "none",
     },
   }));
-  
+
   const [open, setOpen] = useState(false);
 
   return (
     <Box>
-      <ThemeProvider theme={theme}>
-        <AppBar position="sticky" color="neutral">
+      <ThemeProvider theme={mode === 'dark' ? ThemeDark : Theme}>
+        <AppBar position="sticky" style={{ color: "#03a9f4" }}>
           <StyledToolbar>
-            {/* 나중에 폰트 적용하기 */}
-            <Grid container>
-              <Grid item xs={1}>
-                <Avatar
-                  sx={{ width: 50, height: 50 }}
-                  src="https://jmagazine.joins.com/_data/photo/2016/05/2949993309_olERkGMq_01.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                />
-              </Grid>
-              <Grid item xs={11}>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  sx={{ display: { xs: "none", sm: "block" } }}
-                  style={{
-                    color: "black",
-                    fontFamily:"Single Day, cursive",
-                    fontSize: "27px",
-                  }}
-                >
-                  에몽이의 여행 블로그
-                </Typography>
-              </Grid>
-            </Grid>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
+              style={{
+                color: "white",
+                fontFamily: "Libre Baskerville, serif",
+                fontSize: "27px",
+              }}
+            >
+              Travlog
+            </Typography>
+
             <PetsIcon
               sx={{ display: { xs: "block", sm: "none" } }}
               style={{ textDecoration: "none", color: "lightcoral" }}

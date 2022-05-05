@@ -36,12 +36,19 @@ const UserBox = styled(Box)({
   marginBottom: "20px",
 });
 
-const Add = ({ getPostContent, getPostTitle, CreateNewData, saveImgFile, setDatePicker, dateInput }) => {
+const Add = ({
+  getPostContent,
+  getPostTitle,
+  CreateNewData,
+  saveImgFile,
+  setDatePicker,
+  dateInput,
+}) => {
   const [open, setOpen] = useState(false);
   const Input = styled("input")({
     display: "none",
   });
-  const [value, setValue] = useState(null);
+
   return (
     <div>
       <Tooltip
@@ -132,9 +139,11 @@ const Add = ({ getPostContent, getPostTitle, CreateNewData, saveImgFile, setDate
             <VideocamIcon color="success" />
             <AddLocationAltIcon color="error" />
           </Stack>
-          <Button onClick={CreateNewData} fullWidth variant="contained">
-            게시하기
-          </Button>
+          <Box onClick={(e) => setOpen(false)}>
+            <Button onClick={CreateNewData} fullWidth variant="contained">
+              게시하기
+            </Button>
+          </Box>
         </Box>
       </StyledModal>
     </div>
