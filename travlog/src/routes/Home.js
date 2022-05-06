@@ -25,9 +25,7 @@ const Home = () => {
   const [imgURL, setImageURL] = useState(null);
   const [dateInput, setDateInput] = useState();
 
-  //appbar 다크모드
   
-
   useEffect(() => {
     window.localStorage.setItem("postDatas", JSON.stringify(postDatas));
   }, [postDatas]);
@@ -81,6 +79,7 @@ const Home = () => {
     fileReader.readAsDataURL(e.target.files[0]);
     fileReader.onload = function (e) {
     setImageURL(e.target.result);
+    console.log(e)
     };
   };
 
@@ -89,12 +88,10 @@ const Home = () => {
     setDateInput(String(e).substring(0, 15))
   }
 
-  
-
   return (
     <ThemeProvider theme={darkTheme}>
       <Box bgcolor={"background.default"} color={"text.primary"}>
-        <NavBar mode={mode} />
+        <NavBar mode={mode}/>
         <Stack direction="row" spacing={2} justifyContent="space-between">
           <SideBar onDarkMode={onDarkMode} />
           <Feed postDatas={postDatas} deletePostEvent={deletePostEvent} />

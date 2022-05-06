@@ -94,7 +94,7 @@
   - DB 이용이 불가하므로 로컬스토리지를 이용한 데이터 처리가 필요
 
 
-![캡처](https://user-images.githubusercontent.com/90893428/166096381-64f4b805-01be-4d3b-a66c-9628db6dfef9.PNG)
+![asdfasdf](README.assets/asdfasdf.PNG)
 
 ![d](https://user-images.githubusercontent.com/90893428/166096384-2bba69cf-5819-4967-8140-6db78c2e814c.PNG)
 
@@ -535,4 +535,20 @@ const onDarkMode = () => {
 - React는 Virtual DOM을 통해 실제 DOM을 그리기 때문에 실제 DOM으로 접근하는 querySelector을 쓰면, 리엑트가 Virtual DOM에 존재하는지 실제 DOM에 존재하는지 불투명해진다.
 - React 내부 데이터는 State로 조작되는데 실제 DOM을 건들이면 React가 조작하는 범위를 벗어나고, 리엑트를 사용하는 이유가 없어진다.
 - 생명주기에 맞춰서 가져온 DOM Element만을 신뢰할 수 있기 때문에, 데이터를 어디서 어떻게 조작하는지 모르니 당연히 디버깅도 어려워진다.
+
+
+
+### 3) 게시물 이미지 업로드 구현
+
+- FileReader를 이용해 파일을 받아와 해당 파일을 URL의 형식으로 변환해 img.src에 넣어줬다.
+
+```react
+  const saveImgFile = (e) => {
+    let fileReader = new FileReader();
+    fileReader.readAsDataURL(e.target.files[0]);
+    fileReader.onload = function (e) {
+    setImageURL(e.target.result);
+    };
+  };
+```
 
