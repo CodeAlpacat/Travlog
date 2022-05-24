@@ -94,7 +94,7 @@
   - DB 이용이 불가하므로 로컬스토리지를 이용한 데이터 처리가 필요
 
 
-![asdfasdf](README.assets/asdfasdf.PNG)
+![asdfasdf](https://user-images.githubusercontent.com/90893428/167247792-3902116c-2f13-41a6-9ffc-6169ea6f3cb1.PNG)
 
 ![d](https://user-images.githubusercontent.com/90893428/166096384-2bba69cf-5819-4967-8140-6db78c2e814c.PNG)
 

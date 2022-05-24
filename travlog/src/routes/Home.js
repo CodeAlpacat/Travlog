@@ -64,7 +64,7 @@ const Home = () => {
     setMode(mode === "dark" ? "light" : "dark");
   };
 
-  //삭제 시에 setPostDatas 안에 arrow 함수로 filter를 반환하는 실수를 저지름
+  //삭제
   const deletePostEvent = (id) => {
     setPostDatas(
       postDatas.filter((item) => {
